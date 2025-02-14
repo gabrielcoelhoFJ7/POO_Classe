@@ -10,19 +10,19 @@ class Pessoa:
     def apresentar(self):
 
         if self.estudando:
-            self.estudando = "Estudando"
+            estudando_status = "Estudando"
         else:
-            self.estudando = "Not Estudando"
+            estudando_status = "Não Estudando"
         if self.trabalhando:
-            self.trabalhando = "Trabalhando"
+            trabalhando_status = "Trabalhando"
         else:
-            self.trabalhando = "Not Trabalhando"
+            trabalhando_status = "Não Trabalhando"
 
         print("." * 150)
         print(f'Olá sou {self.nome}'
               f' minha data de nascimento {self.data_nascimento}'
               f' meu codigo é {self.codigo}'
-              f' atualmente {self.estudando} e {self.trabalhando}'
+              f' atualmente {estudando_status} e {trabalhando_status}'
               f' meu salário é {self.salario}')
         print("." * 150)
 
@@ -37,11 +37,8 @@ class Pessoa:
 
     def trabalhar(self):
         while not self.trabalhando:
+            self.salario += 1200
             self.trabalhando = True
-            if self.trabalhando:
-                self.salario += 1200
-            if not self.estudando and not self.trabalhando:
-                self.salario = self.salario * 0
 
 
 
@@ -53,22 +50,30 @@ p1 = Pessoa("Lucas", "23/09/1990", "Home_Office", estudando=False, trabalhando=F
 p2 = Pessoa("Luciano", "12/04/1980", "Pai_Familia", estudando=True, trabalhando=False, salario=1200)
 p3 = Pessoa("Alvaro", "15/02/1950", "Mestre_TI", estudando=False, trabalhando=True, salario=1200)
 p4 = Pessoa("Gustavo", "15/10/2007", "Cartonizando", estudando=True, trabalhando=False, salario=1200)
+
 p1.apresentar()
+
 p2.apresentar()
 p3.apresentar()
 
+print("p1//estudar//")
+p1.estudar()
+p1.apresentar()
+print("p1//estudar//")
+p1.estudar()
+p1.apresentar()
+print("p1//trabalho//")
+p1.trabalhar()
 
-p1.estudar()
-p1.apresentar()
-p1.estudar()
-p1.apresentar()
 p1.apresentar()
 
 
 
 # Trabalhador
 p4.trabalhar()
+p4.apresentar()
 p4.trabalhar()
+p4.apresentar()
 p4.trabalhar()
 p4.apresentar()
 
