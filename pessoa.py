@@ -41,41 +41,63 @@ class Pessoa:
             self.trabalhando = True
 
 
+class Bebe(Pessoa):
+    def __init__(self, nome, data_nascimento, codigo, estudando=False, trabalhando=False, salario=0):
+        super().__init__(nome,data_nascimento, codigo , estudando , trabalhando, salario)
+        self.fome = True
+        self.chorando = True
+        self.dormindo = False
+
+    def apresentar(self):
+        fome_status = "com fome" if self.fome == True else "satisfeito"
+        chorando_status = "chorando" if self.chorando == True else "sem chorar"
+        dormindo_status = "dormindo" if self.dormindo == True else "sem dormir"
+        print(f"O {self.nome} está {fome_status}, {chorando_status} e {dormindo_status}")
+
+    def trabalhar(self):
+        print("Bebê não pode trabalhar.")
+
+    def estudar(self):
+        print("Bebê não pode estudar.")
+
+    def mamar(self):
+        if self.dormindo:
+            print(f"O {self.nome} está dormindo e não pode mamar")
+        elif self.chorando:
+            self.fome = False
+            self.chorando = False
+            print(f"{self.nome} mamou e agora está satisfeito!")
+        else:
+            print(f"O {self.nome} já mamou demais")
+
+    def chorar(self):
+        if self.dormindo:
+            print(f"O {self.nome} está dormindo")
+        elif self.fome:
+            self.chorando = True
+            print(f"O {self.nome} está chorando")
+        else:
+            print(f"O {self.nome} não está chorando")
+
+    def dormir(self):
+        if self.dormindo:
+            print(f"O {self.nome} já está dormindo")
+        elif not self.fome:
+            self.dormindo = True
+            print(f"O {self.nome} está dormindo")
+        else:
+            print(f"O {self.nome} não pode dormir")
+    def acordar(self):
+        if self.dormindo:
+            print(f"O {self.nome} acordou")
+            self.fome = True
+            self.dormindo = False
+        else:
+            print(f"O {self.nome} já está acordado")
 
 
-
-
-print("\n\n\n\n")
+print("\n\n\n\n\n\n\n\n\n")
 p1 = Pessoa("Lucas", "23/09/1990", "Home_Office", estudando=False, trabalhando=False, salario=1200)
-p2 = Pessoa("Luciano", "12/04/1980", "Pai_Familia", estudando=True, trabalhando=False, salario=1200)
-p3 = Pessoa("Alvaro", "15/02/1950", "Mestre_TI", estudando=False, trabalhando=True, salario=1200)
-p4 = Pessoa("Gustavo", "15/10/2007", "Cartonizando", estudando=True, trabalhando=False, salario=1200)
 
-p1.apresentar()
-
-p2.apresentar()
-p3.apresentar()
-
-print("p1//estudar//")
-p1.estudar()
-p1.apresentar()
-print("p1//estudar//")
-p1.estudar()
-p1.apresentar()
-print("p1//trabalho//")
-p1.trabalhar()
-
-p1.apresentar()
-
-
-
-# Trabalhador
-p4.trabalhar()
-p4.apresentar()
-p4.trabalhar()
-p4.apresentar()
-p4.trabalhar()
-p4.apresentar()
-
-
+bb1 = Bebe("guilherme", "11/09/01", "asd123", estudando=False, trabalhando=False, salario=0)
 
