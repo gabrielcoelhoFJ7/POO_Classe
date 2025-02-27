@@ -1,29 +1,21 @@
 class Pessoa:
     def __init__(self, nome, data_nascimento, codigo, estudando, trabalhando, salario):
-        self.nome = nome
-        self.data_nascimento = data_nascimento
-        self.codigo = codigo
-        self.estudando = estudando
-        self.trabalhando = trabalhando
-        self.salario = salario
+        self.__nome = nome
+        self.__data_nascimento = data_nascimento
+        self.__codigo = codigo
+        self._estudando = estudando
+        self._trabalhando = trabalhando
+        self._salario = salario
 
     def apresentar(self):
 
-        if self.estudando:
-            estudando_status = "Estudando"
-        else:
-            estudando_status = "Não Estudando"
-        if self.trabalhando:
-            trabalhando_status = "Trabalhando"
-        else:
-            trabalhando_status = "Não Trabalhando"
-
         print("." * 150)
-        print(f'Olá sou {self.nome}'
-              f' minha data de nascimento {self.data_nascimento}'
-              f' meu codigo é {self.codigo}'
-              f' atualmente {estudando_status} e {trabalhando_status}'
-              f' meu salário é {self.salario}')
+        print(f'Olá sou {self.get_nome()}'
+              f' minha data de nascimento {self.get_data_nascimento()}'
+              f' meu codigo é {self.get_codigo()}'
+              f' trabalhando: {'Sim' if self.is_trabalhando() else 'Não'}'
+              f' estudando: {'Sim' if self.is_estudando() else 'Não'}'
+              f' meu salário é {self.get_salario()}')
         print("." * 150)
 
     def estudar(self):
@@ -39,6 +31,44 @@ class Pessoa:
         while not self.trabalhando:
             self.salario += 1200
             self.trabalhando = True
+
+    def get_nome(self):
+        return self.__nome
+    def get_data_nascimento(self):
+        return self.__data_nascimento
+    def get_codigo(self):
+        return self.__codigo
+    def is_estudando(self):
+        return self._estudando
+    def is_trabalhando(self):
+        return self._trabalhando
+    def get_salario(self):
+        return self._salario
+
+
+    def set_salario(self, valor):
+        if valor >= 0:
+            self._salario = valor
+        else:
+            print("Salario inválido")
+
+
+    def set_trabalhar(self, status):
+        if self._trabalhando and status:
+            print("Já está trabalhando")
+        elif not self._trabalhando and not status:
+            print("Que vida boa")
+        elif not self._trabalhando and status:
+            self._trabalhando = status
+            self.set_salario(1200)
+        else:
+            self._trabalhando = status
+
+
+    def set_estudar(self, status):
+        self._estudando = status
+        if status:
+            self.set_salario(self.get_salario() + 400)
 
 
 class Bebe(Pessoa):
