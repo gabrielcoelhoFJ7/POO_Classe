@@ -18,20 +18,6 @@ class Pessoa:
               f' meu salário é {self.get_salario()}')
         print("." * 150)
 
-    def estudar(self):
-        self.estudando = True
-        if self.estudando:
-            self.salario += 1000
-        elif self.estudando and self.trabalhando:
-            self.salario = self.salario * 0.1
-        elif not self.estudando and not self.trabalhando:
-            self.salario = self.salario * 0
-
-    def trabalhar(self):
-        while not self.trabalhando:
-            self.salario += 1200
-            self.trabalhando = True
-
     def get_nome(self):
         return self.__nome
     def get_data_nascimento(self):

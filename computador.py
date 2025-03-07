@@ -2,13 +2,13 @@ from datetime import date
 
 class Eletronico:
     def __init__(self, tipo, marca, data_fabricacao, situacao, voltagem, custo, status):
-        self.tipo = tipo
-        self.marca = marca
-        self.data_fabricacao = data_fabricacao
-        self.situacao = situacao
-        self.voltagem = voltagem
-        self.custo = custo
-        self.status = status
+        self.__tipo = tipo
+        self.__marca = marca
+        self.__data_fabricacao = data_fabricacao
+        self._situacao = situacao
+        self.__voltagem = voltagem
+        self._custo = custo
+        self._status = status
 
     def ligar(self, tomada):
         if self.voltagem == "bivolt" or self.voltagem == tomada:
@@ -42,6 +42,12 @@ class Eletronico:
         tempo_uso = ano_atual - self.data_fabricacao
         print(f"{self.tipo} foi fabricado há {tempo_uso} anos.")
         return tempo_uso
+
+#     Getters and Setters
+
+
+
+
 
 class Computador(Eletronico):
     def __init__(self, tipo, marca, data_fabricacao, situacao, voltagem, custo, status,
